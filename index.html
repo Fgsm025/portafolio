@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fernando Santacroce — Senior Full Stack Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #080808;
+        --bg2: #101010;
+        --bg3: #181818;
+        --text: #ede9e1;
+        --muted: #666;
+        --muted2: #999;
+        --accent: #c8f060;
+        --accent2: #60d0f0;
+        --orange: #f0a060;
+        --border: rgba(255, 255, 255, 0.07);
+        --border2: rgba(255, 255, 255, 0.12);
+        --font-display: 'Syne', sans-serif;
+        --font-body: 'DM Sans', sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 6%;
+        background: rgba(8, 8, 8, 0.8);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        animation: fadeDown 0.6s ease both;
+      }
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .nav-logo {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2.25rem;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+      nav a:hover {
+        color: var(--text);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 9rem 6% 6rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(200, 240, 96, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(200, 240, 96, 0.025) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(
+          ellipse 80% 80% at 50% 50%,
+          black 40%,
+          transparent 100%
+        );
+      }
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(80px);
+      }
+      .hero-orb-1 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(200, 240, 96, 0.07) 0%,
+          transparent 70%
+        );
+        top: -80px;
+        right: 5%;
+        animation: float1 8s ease-in-out infinite;
+      }
+      .hero-orb-2 {
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(
+          circle,
+          rgba(96, 208, 240, 0.05) 0%,
+          transparent 70%
+        );
+        bottom: 10%;
+        left: 10%;
+        animation: float2 11s ease-in-out infinite;
+      }
+      @keyframes float1 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-20px, 30px);
+        }
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(15px, -25px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        max-width: 900px;
+      }
+
+      /* badge */
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: rgba(200, 240, 96, 0.07);
+        border: 1px solid rgba(200, 240, 96, 0.18);
+        border-radius: 999px;
+        padding: 0.4rem 1.1rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        animation: fadeUp 0.7s 0.1s ease both;
+      }
+      .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse 2.2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          box-shadow: 0 0 0 0 rgba(200, 240, 96, 0.4);
+        }
+        50% {
+          opacity: 0.5;
+          box-shadow: 0 0 0 5px rgba(200, 240, 96, 0);
+        }
+      }
+
+      /* headline */
+      .hero-headline {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 7.5vw, 6rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        margin-bottom: 1.75rem;
+        animation: fadeUp 0.7s 0.2s ease both;
+      }
+      .hero-headline em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .hero-headline .line2 {
+        display: block;
+        color: var(--muted2);
+        font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        margin-top: 0.3rem;
+      }
+
+      /* tagline */
+      .hero-tagline {
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        font-weight: 300;
+        color: var(--muted2);
+        max-width: 560px;
+        line-height: 1.75;
+        margin-bottom: 2.75rem;
+        animation: fadeUp 0.7s 0.3s ease both;
+      }
+      .hero-tagline strong {
+        color: var(--text);
+        font-weight: 400;
+      }
+
+      /* pills de stats */
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 2.75rem;
+        animation: fadeUp 0.7s 0.38s ease both;
+      }
+      .hero-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 8px;
+        padding: 0.55rem 1rem;
+        font-size: 0.82rem;
+        color: var(--muted2);
+      }
+      .hero-pill strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .hero-pill-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      /* ctas */
+      .hero-ctas {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        animation: fadeUp 0.7s 0.46s ease both;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.85rem 1.85rem;
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #080808;
+        border: none;
+      }
+      .btn-primary:hover {
+        background: #d6f472;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(200, 240, 96, 0.2);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border2);
+      }
+      .btn-outline:hover {
+        border-color: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.04);
+        transform: translateY(-2px);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* scroll hint */
+      .hero-scroll {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 6%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.7rem;
+        color: var(--muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        animation: fadeUp 0.7s 0.7s ease both;
+      }
+      .scroll-line {
+        width: 36px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+      }
+
+      /* ── SECTIONS SHARED ── */
+      section {
+        padding: 6rem 6%;
+      }
+      .section-tag {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--accent);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
+      }
+      .section-lead {
+        font-size: 1.05rem;
+        color: var(--muted2);
+        font-weight: 300;
+        max-width: 520px;
+        line-height: 1.75;
+        margin-bottom: 3rem;
+      }
+
+      /* ── ABOUT ── */
+      .about-section {
+        background: var(--bg2);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .about-text p {
+        font-size: 1rem;
+        color: var(--muted2);
+        font-weight: 300;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .about-text p strong {
+        color: var(--text);
+        font-weight: 400;
+      }
+      .about-cta {
+        margin-top: 2rem;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .stat-card {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.75rem 1.5rem;
+        transition: border-color 0.2s;
+      }
+      .stat-card:hover {
+        border-color: rgba(200, 240, 96, 0.2);
+      }
+      .stat-number {
+        font-family: var(--font-display);
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 0.4rem;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      /* ── SKILLS ── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
+      }
+      .skill-group {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.75rem;
+        transition: border-color 0.2s;
+      }
+      .skill-group:hover {
+        border-color: var(--border2);
+      }
+      .skill-group-title {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+      }
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .skill-tag {
+        font-size: 0.78rem;
+        padding: 0.28rem 0.75rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--muted2);
+        transition: all 0.15s;
+      }
+      .skill-tag:hover {
+        border-color: var(--border2);
+        color: var(--text);
+      }
+      .skill-tag.core {
+        color: var(--accent);
+        border-color: rgba(200, 240, 96, 0.22);
+        background: rgba(200, 240, 96, 0.05);
+      }
+      .skill-tag.back {
+        color: var(--accent2);
+        border-color: rgba(96, 208, 240, 0.2);
+        background: rgba(96, 208, 240, 0.04);
+      }
+      .skill-tag.infra {
+        color: var(--orange);
+        border-color: rgba(240, 160, 96, 0.2);
+        background: rgba(240, 160, 96, 0.04);
+      }
+
+      /* ── PROJECTS ── */
+      .projects-section {
+        background: var(--bg2);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.25rem;
+      }
+      .project-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .project-card:hover {
+        border-color: rgba(200, 240, 96, 0.28);
+        transform: translateY(-5px);
+      }
+
+      .project-header {
+        padding: 1.6rem 1.75rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+      .project-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+      }
+      .project-badge {
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+      }
+      .badge-live {
+        background: rgba(200, 240, 96, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(200, 240, 96, 0.2);
+      }
+      .badge-client {
+        background: rgba(96, 208, 240, 0.08);
+        color: var(--accent2);
+        border: 1px solid rgba(96, 208, 240, 0.15);
+      }
+      .badge-saas {
+        background: rgba(240, 160, 96, 0.08);
+        color: var(--orange);
+        border: 1px solid rgba(240, 160, 96, 0.15);
+      }
+
+      .project-body {
+        padding: 0 1.75rem 1.75rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .project-title {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin-bottom: 0.6rem;
+      }
+      .project-desc {
+        font-size: 0.875rem;
+        color: var(--muted2);
+        font-weight: 300;
+        line-height: 1.75;
+        margin-bottom: 1.4rem;
+        flex: 1;
+      }
+      .project-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border);
+      }
+      .stack-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        border: 1px solid var(--border);
+      }
+      .stack-tag.core {
+        color: var(--accent);
+        border-color: rgba(200, 240, 96, 0.18);
+      }
+      .stack-tag.back {
+        color: var(--accent2);
+        border-color: rgba(96, 208, 240, 0.15);
+      }
+      .stack-tag.infra {
+        color: var(--orange);
+        border-color: rgba(240, 160, 96, 0.15);
+      }
+
+      /* ── CONTACT ── */
+      .contact-section {
+        text-align: center;
+        background: var(--bg);
+      }
+      .contact-inner {
+        max-width: 580px;
+        margin: 0 auto;
+      }
+      .contact-inner h2 {
+        margin-bottom: 1rem;
+      }
+      .contact-sub {
+        font-size: 1rem;
+        color: var(--muted2);
+        font-weight: 300;
+        line-height: 1.75;
+        margin-bottom: 2.5rem;
+      }
+      .contact-email {
+        display: inline-block;
+        font-family: var(--font-display);
+        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(200, 240, 96, 0.3);
+        padding-bottom: 2px;
+        transition: opacity 0.2s;
+        margin-bottom: 2.5rem;
+      }
+      .contact-email:hover {
+        opacity: 0.65;
+      }
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        color: var(--muted2);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 400;
+        transition: all 0.2s;
+      }
+      .contact-link:hover {
+        border-color: rgba(200, 240, 96, 0.3);
+        color: var(--accent);
+        background: rgba(200, 240, 96, 0.05);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        padding: 1.75rem 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+      .footer-dot {
+        color: var(--accent);
+        margin: 0 4px;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .about-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-pills {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">Fernando<span>.</span></div>
+      <ul>
+        <li><a href="#perfil">Perfil</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Disponible para proyectos remotos
+        </div>
+
+        <h1 class="hero-headline">
+          Senior Full Stack<br />
+          <em>Engineer</em>
+          <span class="line2">SaaS · AI · Data Analytics</span>
+        </h1>
+
+        <p class="hero-tagline">
+          Convierto ideas complejas en
+          <strong>productos digitales escalables</strong>. Especializado en
+          interfaces de datos, dashboards y plataformas
+          <strong>full stack</strong> con el ecosistema React / Node.
+        </p>
+
+        <div class="hero-pills">
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span><strong>7+</strong> años de
+            experiencia
+          </div>
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>Mendoza, Argentina
+            <strong>· Remote</strong>
+          </div>
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>React · Next.js ·
+            <strong>NestJS</strong>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos →</a>
+          <a href="mailto:fernancroce@gmail.com" class="btn btn-outline"
+            >Contactarme</a
+          >
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        scroll
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="perfil" class="about-section">
+      <div class="section-tag">// Sobre mí</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Ingeniería con foco<br />en el producto</h2>
+          <p class="section-lead">
+            No solo escribo código — defino qué construir y por qué.
+          </p>
+          <p>
+            Mi trabajo se centra en
+            <strong
+              >productos de analítica, dashboards de alta complejidad y
+              herramientas de IA</strong
+            >
+            que impactan métricas reales de negocio. He liderado el frontend de
+            plataformas usadas por <strong>400+ inversores activos</strong>
+            y desarrollado infraestructuras seguras para Fintech y Agro.
+          </p>
+          <p>
+            Trabajo de forma
+            <strong>remota con equipos internacionales</strong>, comunicación
+            asincrónica y entregas en tiempo y forma. Inglés técnico avanzado.
+          </p>
+          <div class="about-cta">
+            <a href="mailto:fernancroce@gmail.com" class="btn btn-outline"
+              >Hablar sobre un proyecto →</a
+            >
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-number">7+</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">73%</div>
+            <div class="stat-label">Retention lograda en producto</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">85%</div>
+            <div class="stat-label">Mejora de performance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">Inversores activos en plataforma</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-tag">// Stack tecnológico</div>
+      <h2>Con qué trabajo</h2>
+      <p class="section-lead">
+        Tecnologías que uso día a día en producción, no solo en tutoriales.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Frontend & State</div>
+          <div class="skill-tags">
+            <span class="skill-tag core">React 18</span>
+            <span class="skill-tag core">Next.js 14</span>
+            <span class="skill-tag core">TypeScript</span>
+            <span class="skill-tag">Redux</span>
+            <span class="skill-tag">Zustand</span>
+            <span class="skill-tag">Context API</span>
+            <span class="skill-tag">Framer Motion</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Backend & Bases de datos</div>
+          <div class="skill-tags">
+            <span class="skill-tag back">Node.js</span>
+            <span class="skill-tag back">NestJS</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">GraphQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud & Infra</div>
+          <div class="skill-tags">
+            <span class="skill-tag infra">Vercel</span>
+            <span class="skill-tag infra">Render</span>
+            <span class="skill-tag infra">Supabase</span>
+            <span class="skill-tag infra">AWS</span>
+            <span class="skill-tag infra">Docker</span>
+            <span class="skill-tag">Neon DB</span>
+            <span class="skill-tag">Firebase</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="projects-section">
+      <div class="section-tag">// Casos de éxito</div>
+      <h2>Lo que construí</h2>
+      <p class="section-lead">
+        Proyectos reales en producción, con impacto medible.
+      </p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🤖</div>
+            <span class="project-badge badge-saas">SaaS</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">AI Content Automation</div>
+            <p class="project-desc">
+              Diseño completo de producto y frontend. Generación de posteos con
+              IA y sistema de publicación automática programada. Flujo de
+              onboarding y gestión de cuentas conectadas.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag core">React.js</span>
+              <span class="stack-tag">Redux</span>
+              <span class="stack-tag">AI Integration</span>
+              <span class="stack-tag infra">Render</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">📊</div>
+            <span class="project-badge badge-client">Cliente</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Analytics — FE International</div>
+            <p class="project-desc">
+              Dashboard masivo para 400+ inversores activos. Gestión de estado
+              compleja, optimización de carga de datos pesados y visualizaciones
+              financieras en tiempo real.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag core">Next.js</span>
+              <span class="stack-tag">Redux</span>
+              <span class="stack-tag back">AWS</span>
+              <span class="stack-tag infra">Vercel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🚗</div>
+            <span class="project-badge badge-client">Cliente</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Coches.com — Santander Bank</div>
+            <p class="project-desc">
+              Marketplace automotriz propiedad del Banco Santander. Escalamiento
+              de componentes en monorepo, SEO técnico avanzado y sistema de
+              shared UI para múltiples equipos.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag core">Next.js</span>
+              <span class="stack-tag">Context API</span>
+              <span class="stack-tag">Shared UI</span>
+              <span class="stack-tag infra">Vercel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">💬</div>
+            <span class="project-badge badge-saas">SaaS</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">SmartBots Platform</div>
+            <p class="project-desc">
+              SaaS para creación y gestión de chatbots inteligentes.
+              Arquitectura de microservicios con Docker, panel de administración
+              y métricas de conversación.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag core">React.js</span>
+              <span class="stack-tag">Redux</span>
+              <span class="stack-tag back">MongoDB</span>
+              <span class="stack-tag back">Docker</span>
+              <span class="stack-tag infra">Render</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">💳</div>
+            <span class="project-badge badge-saas">Fintech</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Omni Wallet</div>
+            <p class="project-desc">
+              Billetera digital corporativa de alta seguridad. Gestión de saldos
+              multicuenta, transacciones en tiempo real y flujos de aprobación
+              con autenticación multifactor.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag core">Next.js</span>
+              <span class="stack-tag">Zustand</span>
+              <span class="stack-tag back">NestJS</span>
+              <span class="stack-tag back">PostgreSQL</span>
+              <span class="stack-tag infra">Supabase</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🌾</div>
+            <span class="project-badge badge-saas">SaaS B2B</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Agronomy Management SaaS</div>
+            <p class="project-desc">
+              Plataforma B2B para gestión agrícola. Base de datos serverless
+              Neon con consultas optimizadas, reportes exportables y dashboard
+              de métricas por parcela y campaña.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag core">Next.js</span>
+              <span class="stack-tag">Zustand</span>
+              <span class="stack-tag back">NestJS</span>
+              <span class="stack-tag back">Neon DB</span>
+              <span class="stack-tag infra">Vercel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact-section">
+      <div class="contact-inner">
+        <div class="section-tag">// Contacto</div>
+        <h2>¿Hablamos sobre tu<br />próximo producto?</h2>
+        <p class="contact-sub">
+          Estoy disponible para posiciones remotas full-time o proyectos
+          freelance. Si tenés algo en mente, escribime directamente.
+        </p>
+        <a href="mailto:fernancroce@gmail.com" class="contact-email"
+          >fernancroce@gmail.com</a
+        >
+        <div class="contact-links">
+          <a
+            href="https://www.linkedin.com/in/fernando-santacroce/"
+            target="_blank"
+            class="contact-link"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              />
+            </svg>
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/Fgsm025"
+            target="_blank"
+            class="contact-link"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2025 Fernando Santacroce</span>
+      <span
+        >Mendoza, Argentina <span class="footer-dot">·</span> Remote World</span
+      >
+    </footer>
+  </body>
+</html>
