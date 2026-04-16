@@ -151,6 +151,28 @@
         overflow: hidden;
       }
 
+      .hero-cover {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-color: var(--bg);
+        background-image: url('hero-cover.png');
+        background-size: cover;
+        background-position: 72% center;
+        background-repeat: no-repeat;
+      }
+      .hero-cover::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(10, 10, 10, 0.92) 0%,
+          rgba(10, 10, 10, 0.55) 48%,
+          rgba(10, 10, 10, 0.3) 100%
+        );
+      }
+
       .hero-bg-number {
         position: absolute;
         right: -2%;
@@ -178,6 +200,8 @@
         align-items: center;
         overflow: hidden;
         z-index: 2;
+        background: rgba(10, 10, 10, 0.45);
+        backdrop-filter: blur(12px);
       }
       .hero-ticker-inner {
         display: flex;
@@ -843,6 +867,7 @@
 
     <!-- HERO -->
     <section class="hero">
+      <div class="hero-cover" aria-hidden="true"></div>
       <div class="hero-ticker">
         <div class="hero-ticker-inner">
           <span>Available for Remote Work</span> · React · Next.js · NestJS ·
